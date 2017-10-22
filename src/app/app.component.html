@@ -1,0 +1,17 @@
+<div class="col-md-12">
+  <div id="personsmodal" class="col-md-12 well">
+    <h1>Person selector with Angular</h1>
+    <hr>
+    <app-persons-list
+      [persons]="listPersons"
+      (onPersonSelectionChanged)="onPersonSelectionChanged($event)">
+    </app-persons-list>
+    <app-person-details
+      [selectedPerson]="selectedPerson">
+    </app-person-details>
+    <app-new-person-form
+      (onChanged)="onNewPersonFormChanged($event)">
+    </app-new-person-form>
+  </div>
+</div>
+

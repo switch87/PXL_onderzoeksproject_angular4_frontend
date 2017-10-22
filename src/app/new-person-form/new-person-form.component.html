@@ -1,0 +1,33 @@
+<form class="col-md-12" (keyup)="onFormChanged()">
+  <div class="form-group col-xs-6">
+    <label for="name">Name:</label>
+    <input type="text" class="form-control" id="name"
+    [(ngModel)]="person.name" name="name">
+    <label for="surname">Surname:</label>
+    <input type="text" class="form-control" id="surname"
+    [(ngModel)]="person.surname" name="surname">
+    <label for="origin">Origin:</label>
+    <input type="text" class="form-control" id="origin"
+           [(ngModel)]="person.origin" name="origin">
+    <label for="Allegiance">Allegiance:</label>
+    <input type="text" class="form-control" id="Allegiance"
+           [(ngModel)]="person.allegiance" name="Allegiance">
+  </div>
+  <div class="col-xs-6 form-group">
+  <label for="gender">Gender:</label><br>
+    <span *ngFor="let gender of ['M', 'F']">
+  <input type="radio"
+         [(ngModel)]="person.sex" name="gender" id="gender"
+         value="{{gender}}"> {{gender}}
+    </span>
+    <br><br>
+    <label for="by">Birth year:</label>
+    <input type="text" class="form-control" id="by"
+           [(ngModel)]="person.birthDate" name="by">
+    </div>
+  <div class="col-xs-12">
+    <button class="btn-success btn">Save</button>
+    <button class="btn-danger btn" (click)="onResetFormClicked()">Reset</button>
+  </div>
+</form>
+

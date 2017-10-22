@@ -1,0 +1,17 @@
+<div id="selectedperson" *ngIf="selectedPerson.id!= -1" class="col-md-6 well-sm">
+  <div class="col-xs-3">
+    <img class="img-responsive" [src]="sanitizer.bypassSecurityTrustUrl(image)">
+  </div>
+  <div class="col-xs-9">
+    <h2>{{selectedPerson.name}} {{selectedPerson.surname}}</h2>
+    <div class="col-xs-6">
+      <p>Origin: {{selectedPerson.origin}}</p>
+      <p>Allegiance: {{selectedPerson.allegiance}}</p>
+    </div>
+    <div class="col-xs-6">
+      <p>Sex: {{selectedPerson.sex}}</p>
+      <p>Birth Year: {{selectedPerson.birthDate}}</p>
+      <p>Year of death: {{selectedPerson.death}}</p>
+    </div>
+  </div>
+</div>

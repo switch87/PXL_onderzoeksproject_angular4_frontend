@@ -1,0 +1,10 @@
+<ul appScroll class="divScroll col-md-6 list-group">
+  <app-persons-list-item
+    [person]="person"
+    [selected]="selectedPerson === person.id"
+    *ngFor="let person of persons"
+    (click)="onSelectPerson(person)">
+  </app-persons-list-item>
+
+</ul>
+

@@ -10,7 +10,8 @@
       [selectedPerson]="selectedPerson">
     </app-person-details>
     <app-new-person-form
-      (onChanged)="onNewPersonFormChanged($event)">
+      (onChanged)="onNewPersonFormChanged($event)"
+    (onNewPersonSaved)="onNewPersonSaved($event)">
     </app-new-person-form>
   </div>
 </div>

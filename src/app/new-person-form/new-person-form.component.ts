@@ -8,6 +8,7 @@ import {Person} from "../models/person";
 })
 export class NewPersonFormComponent implements OnInit {
   @Output() onChanged = new EventEmitter<Person>();
+  @Output() onNewPersonSaved = new EventEmitter<Person>();
   person: Person = new Person();
 
   constructor() {
@@ -25,6 +26,11 @@ export class NewPersonFormComponent implements OnInit {
   onResetFormClicked() {
     this.person = new Person();
     this.onFormChanged();
+  }
+
+  onSubmitClicked(){
+    this.onNewPersonSaved.emit(this.person);
+    this.onResetFormClicked();
   }
 
 }

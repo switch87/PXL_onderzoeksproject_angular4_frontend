@@ -21,7 +21,8 @@ export class AppComponent implements OnInit{
 
   getAllPersons(): void {
     this.personService.getAllPersons()
-      .then(persons => {this.persons = persons;
+      .then(persons => {
+        this.persons = this.sort(persons);
         this.listPersons = this.persons;
       });
   }
@@ -66,8 +67,23 @@ export class AppComponent implements OnInit{
       });
   }
 
+  onNewPersonSaved(person: Person){
+   person.id = -1;
+   this.persons.unshift(person);
+   this.personService.postNewPerson(person)
+     .then((result: Person) => {
+     this.persons.splice(this.persons.indexOf(person), 1);
+     this.persons.push(result);
+     this.persons = this.sort(this.persons)
+     })
+  }
+
   onPersonSelectionChanged(id: number){
     this.selectedPerson = id === -1? AppComponent.selectNoPerson(): this.persons.find(person => person.id === id);
+  }
+
+  sort(persons: Person[]): Person[]{
+    return persons.sort((p1, p2)=> {return (p1.surname < p2.surname)? -1:1})
   }
 
 }

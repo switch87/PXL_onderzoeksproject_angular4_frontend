@@ -18,6 +18,7 @@ export class PersonDetailsComponent implements OnInit {
 
   @Input()
   set selectedPerson(person: Person) {
+    console.log(person.death);
     this._selectedPerson = person;
     if (person.id === -1) this.image = this.standardImg;
     else this.personService.getPersonImg(person.id)

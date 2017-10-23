@@ -15,7 +15,7 @@ export class PersonService {
     return this.http.get(this.personUri)
       .toPromise()
       .then(response => response.json() as Person[])
-      .catch(this.handleError);
+      .catch(error => this.handleError(error));
   }
 
   private handleError(error: any): Promise<any> {
@@ -26,5 +26,13 @@ export class PersonService {
   getPersonImg(id: number){
     return this.http.get(this.personUri + id + "/image/")
       .toPromise().then(response => response.text() as string)
+      .catch(error => this.handleError(error))
+  }
+
+  postNewPerson(person: Person): Promise<Person> {
+    return this.http.post(this.personUri, person)
+      .toPromise()
+      .then(response => response.json() as Person)
+      .catch(error => this.handleError(error));
   }
 }
